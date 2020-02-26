@@ -26,7 +26,8 @@ public class main_dashboard extends AppCompatActivity
         navigationView.addSpaceItem(new SpaceItem("", R.drawable.icons8_add_user_group_woman_man_32px));
         navigationView.addSpaceItem(new SpaceItem("", R.drawable.icons8_add_pie_chart_report_32px));
 
-
+        navigationView.setCentreButtonSelectable(true);
+        navigationView.setCentreButtonSelected();
         navigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
