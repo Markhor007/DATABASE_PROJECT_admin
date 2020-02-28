@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.database_project_admin.fragments.add_samesman_fragment;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
@@ -13,9 +14,12 @@ public class main_dashboard extends AppCompatActivity
 {
 
     SpaceNavigationView navigationView;
+    add_samesman_fragment addSamesmanFragment;
+    int error=1000;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_dashboard);
 
@@ -28,6 +32,7 @@ public class main_dashboard extends AppCompatActivity
 
         navigationView.setCentreButtonSelectable(true);
         navigationView.setCentreButtonSelected();
+        addSamesmanFragment=new add_samesman_fragment();
         navigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
@@ -37,7 +42,13 @@ public class main_dashboard extends AppCompatActivity
 
             @Override
             public void onItemClick(int itemIndex, String itemName) {
+
                 Toast.makeText(main_dashboard.this, itemIndex + " " + itemName, Toast.LENGTH_SHORT).show();
+                if(itemIndex==0&&error!=itemIndex)
+                {
+                    getSupportFragmentManager().beginTransaction().add(R.id.main_dashboard_container,addSamesmanFragment).commit();
+                }
+                error=itemIndex;
 
             }
 
